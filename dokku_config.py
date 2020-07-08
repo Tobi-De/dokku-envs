@@ -21,15 +21,24 @@ def set_dokku_app_envs(env_dict, app_name):
     )
 
 
-if __name__ == "__main__":
+def read_env_file(file_path):
     env_dict = {}
+    with open(file_path, "r") as f:
+        for line in f:
+            env_list = line.strip().split("=")
+            env_dict[env_list[0]] = env_list[1]
+    return env_dict
+
+
+if __name__ == "__main__":
+    try:
+        env_file = sys.argv[2]
+    except IndexError:
+        env_file = ".env"
     try:
         app_name = sys.argv[1]
     except IndexError:
         print("usage: python dokku_config.py <app_name>")
     else:
-        with open(".env", "r") as f:
-            for line in f:
-                env_list = line.strip().split("=")
-                env_dict[env_list[0]] = env_list[1]
+        env_dict = read_env_file(env_file)
         set_dokku_app_envs(env_dict, app_name)

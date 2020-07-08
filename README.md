@@ -11,14 +11,38 @@ A python script to easilty and quickly set environment variable on a [dokku](htt
   git remote add dokku dokku@dokku_server:your_app_name
   ```
 
-- then run the script from your local machine, make sure your env file is structure like this:
+- then run the script with :
+
+  ```sh
+  python dokku_config.py <app_name>
+  ```
+
+  you can also specify the file path you want to use but the file should alway be formatted like describe below in the required section
+
+  ```sh
+  python dokku_config.py <app_name> <file_path>
+  ```
+
+## Required
+
+- python 3.X
+
+- make sure your env file is structure like this:
 
   ```txt
   SECRET_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  DEBUG=False
   ```
 
   **or**
 
   ```txt
   SECRET_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  DEBUG="False"
   ```
+
+  Each env value on a line.
+
+### Sidenote
+
+You can also use this script for [heroku](https://heroku.com) app, just replace **dokku** by **heroku** everywhere.
