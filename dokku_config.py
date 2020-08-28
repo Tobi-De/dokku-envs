@@ -1,6 +1,5 @@
 import os
 import sys
-from pathlib import Path
 import click
 
 # TODO use click package
@@ -13,17 +12,24 @@ def run_commands(command, appname, env_dict):
     #  app_name=app_name, env_name=env_name, env_value=env_value
     for env_name, env_value in env_dict.items():
         os.system(
-            command.format(app_name=app_name, env_name=env_name, env_value=env_value)
+            command.format(app_name=appname, env_name=env_name, env_value=env_value)
         )
 
 
 def read_env_file(file_path):
-    env_dict = {}
-    with open(file_path, "r") as f:
-        for line in f:
-            env_list = line.strip().split("=")
-            env_dict[env_list[0]] = env_list[1]
-    return env_dict
+    try:
+        open(file_path, "r")
+    except FileNotFoundError:
+        return {}
+    else:
+        with open(file_path, "r") as f:
+            env_dict = {
+                line.strip().split("=")[0]: line.strip().split("=")[1] for line in f
+            }
+            # for line in f:
+            #     env_list = line.strip().split("=")
+            #     env_dict[env_list[0]] = env_list[1]
+        return env_dict
 
 
 @click.command()
@@ -52,7 +58,7 @@ def set_dokku_app_envs(env, appname):
     if not env_dict:
         return
 
-    run_commands(command, env_dict)
+    run_commands(command, appname, env_dict)
 
     # set random secret key and admin url, comment if not needed
     defaults = {
@@ -62,18 +68,8 @@ def set_dokku_app_envs(env, appname):
         "PYTHONHASHSEED": "random",
     }
 
-    run_commands(command, defaults)
+    run_commands(command, appname, defaults)
 
 
 if __name__ == "__main__":
-    try:
-        env_file = sys.argv[2]
-    except IndexError:
-        env_file = ".env"
-    try:
-        app_name = sys.argv[1]
-    except IndexError:
-        print("usage: python dokku_config.py <app_name>")
-    else:
-        env_dict = read_env_file(env_file)
-        set_dokku_app_envs(env_dict, app_name)
+    set_dokku_app_envs()
