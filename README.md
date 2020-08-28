@@ -25,7 +25,8 @@ A python script to easilty and quickly set environment variable on a [dokku](htt
 
 ## Required
 
-- python 3.X
+- python >= 3.7
+- click == 7.1.2
 
 - make sure your env file is structure like this:
 
