@@ -6,7 +6,7 @@ setup(
     py_modules=["dokkuconfig"],
     install_requires=["click"],
     entry_points="""
-    [console_scripts]
-    dokkuconfig=dokku_config:cli
+        [console_scripts]
+        dokkuconfig=dokku_config:set_dokku_app_envs
     """,
 )

@@ -71,5 +71,5 @@ def set_dokku_app_envs(env, appname):
     run_commands(command, appname, defaults)
 
 
-if __name__ == "__main__":
-    set_dokku_app_envs()
+# if __name__ == "__main__":
+#     set_dokku_app_envs()

@@ -23,6 +23,13 @@ A python script to easilty and quickly set environment variable on a [dokku](htt
   python dokku_config.py <app_name> <file_path>
   ```
 
+- you can use pip to add the command to your path, just run from the root of the directory:
+    ```sh
+    pip install -e .
+    # when it is done
+    dokkuconfig --help
+    ``` 
+
 ## Required
 
 - python >= 3.7

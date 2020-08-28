@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        dokkuconfig=dokku_config:set_dokku_app_envs
+    
