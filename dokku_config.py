@@ -1,10 +1,7 @@
 import os
-import sys
+
 import click
 
-# TODO use click package
-# TODO instead of dokku, the dt command could be use
-# TODO the app name is not needed with the dokku-toolbet
 # TODO refactor this code, maybe with an oop approach
 
 
@@ -26,9 +23,6 @@ def read_env_file(file_path):
             env_dict = {
                 line.strip().split("=")[0]: line.strip().split("=")[1] for line in f
             }
-            # for line in f:
-            #     env_list = line.strip().split("=")
-            #     env_dict[env_list[0]] = env_list[1]
         return env_dict
 
 
