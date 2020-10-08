@@ -1,8 +1,0 @@
-README.md
-setup.py
-dokkuconfig.egg-info/PKG-INFO
-dokkuconfig.egg-info/SOURCES.txt
-dokkuconfig.egg-info/dependency_links.txt
-dokkuconfig.egg-info/entry_points.txt
-dokkuconfig.egg-info/requires.txt
-dokkuconfig.egg-info/top_level.txt

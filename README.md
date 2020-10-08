@@ -4,31 +4,24 @@ A python script to easilty and quickly set environment variable on a [dokku](htt
 
 ## Usage
 
-- copy the file to the root of your project or where ever your .env file is located
-- make sure you have the dokku cli installed(see dokku docs) and you have added the dokku remote repository to your project with git
+- copy the file to the root of your project or where ever your env file is located.
+- make sure you have the [dokku-toolbelt](http://dokku.viewdocs.io/dokku/community/clients/#nodejs-dokku-toolbelt) installed and you have added the dokku remote repository to your project with git
 
   ```sh
   git remote add dokku dokku@dokku_server:your_app_name
   ```
 
-- then run the script with :
+- then run the script from your local pc with :
 
   ```sh
-  python dokku_config.py <app_name>
+  python dokku_config.py <env_path>
   ```
 
-  you can also specify the file path you want to use but the file should alway be formatted like describe below in the required section
+  If you are running the script from the remote server using the dokku cli, you need to specify the project name
 
   ```sh
-  python dokku_config.py <app_name> <file_path>
+  python dokku_config.py --app <appname> <env_path>
   ```
-
-- you can use pip to add the command to your path, just run from the root of the directory:
-    ```sh
-    pip install -e .
-    # when it is done
-    dokkuconfig --help
-    ``` 
 
 ## Required
 
