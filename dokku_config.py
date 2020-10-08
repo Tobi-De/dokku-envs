@@ -43,7 +43,7 @@ def set_dokku_app_envs(env, app):
 
     # set random secret key and admin url, comment if not needed
     extra = {
-        # "DJANGO_SECRET_KEY": "$(openssl rand -base64 64)",
+        "DJANGO_SECRET_KEY": "$(openssl rand -base64 64 | tr -dc 'A-HJ-NP-Za-km-z2-9')",
         "DJANGO_ADMIN_URL": "$(openssl rand -base64 4096 | tr -dc 'A-HJ-NP-Za-km-z2-9' | head -c 32)/",
         "PYTHONHASHSEED": "random",
     }
